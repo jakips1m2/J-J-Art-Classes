@@ -77,6 +77,8 @@
 
         .form-container input[type="text"], 
         .form-container input[type="email"],
+        .form-container input[type="date"],
+        .form-container input[type="time"],
         .form-container textarea {
             width: 100%;
             padding: 8px;
@@ -141,28 +143,35 @@
         </section>
 
         <section id="calendar" class="section">
-            <h2>Visual Calendar</h2>
-            <p>Use the calendar below to select your preferred dates:</p>
-            <!-- Calendar component (replace with actual calendar implementation) -->
-            <div class="calendar">
-                <!-- Placeholder for calendar -->
-                <input type="date" id="calendar-date">
-                <input type="time" id="calendar-time">
-            </div>
-            <button onclick="submitCalendar()">Submit</button>
-        </section>
-
-        <section id="ideas" class="section">
-            <h2>Ideas</h2>
-            <p>Submit your ideas for what your children want to draw:</p>
-            <!-- Ideas submission form -->
+            <h2>Schedule Your Class</h2>
             <div class="form-container">
-                <form action="mailto:judet.v789@gmail.com" method="post" enctype="text/plain">
+                <form id="class-form" action="mailto:judet.v789@gmail.com" method="post" enctype="text/plain">
                     <label for="name">Your Name:</label>
                     <input type="text" id="name" name="name" required>
                     
                     <label for="email">Your Email:</label>
                     <input type="email" id="email" name="email" required>
+                    
+                    <label for="date">Preferred Date:</label>
+                    <input type="date" id="date" name="date" required>
+                    
+                    <label for="time">Preferred Time:</label>
+                    <input type="time" id="time" name="time" required>
+                    
+                    <input type="submit" value="Submit">
+                </form>
+            </div>
+        </section>
+
+        <section id="ideas" class="section">
+            <h2>Ideas for Drawing</h2>
+            <div class="form-container">
+                <form id="ideas-form" action="mailto:judet.v789@gmail.com" method="post" enctype="text/plain">
+                    <label for="ideas-name">Your Name:</label>
+                    <input type="text" id="ideas-name" name="ideas-name" required>
+                    
+                    <label for="ideas-email">Your Email:</label>
+                    <input type="email" id="ideas-email" name="ideas-email" required>
                     
                     <label for="idea">Idea for Drawing:</label>
                     <textarea id="idea" name="idea" rows="4" required></textarea>
@@ -178,13 +187,59 @@
     </footer>
 
     <script>
-        function submitCalendar() {
-            // Replace with actual submission logic (e.g., send email with selected date/time)
-            var selectedDate = document.getElementById('calendar-date').value;
-            var selectedTime = document.getElementById('calendar-time').value;
-            var message = "Selected Date: " + selectedDate + "\nSelected Time: " + selectedTime;
-            alert(message); // Example: Replace with actual email submission logic
-        }
+        // Function to handle form submission for scheduling class
+        document.getElementById("class-form").addEventListener("submit", function(event) {
+            event.preventDefault(); // Prevent default form submission
+            
+            // Collect form data
+            var formData = new FormData(this);
+            var formEntries = formData.entries();
+            var formDataObject = {};
+            
+            // Convert FormData to JSON object
+            for (const [key, value] of formEntries) {
+                formDataObject[key] = value;
+            }
+
+            // Prepare email content
+            var emailContent = `Name: ${formDataObject.name}\nEmail: ${formDataObject.email}\nDate: ${formDataObject.date}\nTime: ${formDataObject.time}`;
+
+            // Simulate sending email (replace with actual email sending logic)
+            console.log("Sending email to judet.v789@gmail.com with content:\n" + emailContent);
+            // Example: Use AJAX to send email
+            // $.post('send-email.php', formDataObject);
+
+            // Optional: Display confirmation message
+            alert("Your class request has been submitted!");
+            this.reset(); // Reset form fields after submission
+        });
+
+        // Function to handle form submission for submitting drawing ideas
+        document.getElementById("ideas-form").addEventListener("submit", function(event) {
+            event.preventDefault(); // Prevent default form submission
+            
+            // Collect form data
+            var formData = new FormData(this);
+            var formEntries = formData.entries();
+            var formDataObject = {};
+            
+            // Convert FormData to JSON object
+            for (const [key, value] of formEntries) {
+                formDataObject[key] = value;
+            }
+
+            // Prepare email content
+            var emailContent = `Name: ${formDataObject['ideas-name']}\nEmail: ${formDataObject['ideas-email']}\nIdea: ${formDataObject.idea}`;
+
+            // Simulate sending email (replace with actual email sending logic)
+            console.log("Sending email to judet.v789@gmail.com with content:\n" + emailContent);
+            // Example: Use AJAX to send email
+            // $.post('send-email.php', formDataObject);
+
+            // Optional: Display confirmation message
+            alert("Your drawing idea has been submitted!");
+            this.reset(); // Reset form fields after submission
+        });
     </script>
 </body>
 </html>
