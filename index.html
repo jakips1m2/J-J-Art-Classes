@@ -12,6 +12,9 @@
             margin: 0;
             padding: 0;
             color: #5c4033; /* Warm brown text */
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
         }
         header {
             background-color: #d2b48c; /* Tan background */
@@ -27,7 +30,9 @@
         }
         nav {
             text-align: center;
-            margin: 20px;
+            margin: 0;
+            padding: 10px 0;
+            background-color: #e9c3a6; /* Light tan background */
         }
         nav a {
             margin: 0 15px;
@@ -36,15 +41,18 @@
             font-weight: bold;
         }
         section {
-            margin: 20px;
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
             display: none;
         }
         section.active {
             display: block;
         }
         .calendar, .reviews, .artwork, .login-form {
-            margin: 20px auto;
+            margin: 0 auto;
             max-width: 500px;
+            width: 100%;
         }
         .login-form input {
             margin: 10px 0;
@@ -57,6 +65,11 @@
             top: 0;
             right: 0;
             width: 100px;
+        }
+        form label, form input, form button {
+            display: block;
+            width: 100%;
+            margin: 5px 0;
         }
     </style>
 </head>
@@ -74,6 +87,8 @@
 
     <section id="home" class="active">
         <h2>Welcome to J & J Art Classes</h2>
+        <p>Hey, young creatives! I'm Jude, and I'm all about keeping things chill and colorful. At my art studio, it's not about perfection; it's about the journey of creating something uniquely yours. If you're looking to escape the everyday hustle and bustle and dive into a world of paint, pencils, and endless possibilities, you've come to the right place.</p>
+        <p>My in-person art classes are a space where you can kick back, relax, and let your imagination run wild. From learning the basics of sketching to experimenting with different painting techniques, we'll explore it all at your own pace. No pressure, just good vibes and plenty of room to explore.</p>
         <p>Price: 240 DHS a month, 30 DHS per class</p>
         <p>Classes are held every Saturday and Sunday.</p>
         <p>Contact us at 0562418046 or email judet.v789@gmail.com</p>
@@ -90,6 +105,8 @@
             <input type="email" id="email" name="email" required><br>
             <label for="dates">Select Dates:</label>
             <input type="date" id="dates" name="dates" multiple required><br>
+            <label for="time">Suggested Time:</label>
+            <input type="time" id="time" name="time" required><br>
             <button type="submit">Submit</button>
         </form>
     </section>
@@ -131,9 +148,10 @@
             const phone = document.getElementById('phone').value;
             const email = document.getElementById('email').value;
             const dates = document.getElementById('dates').value;
+            const time = document.getElementById('time').value;
 
             // This is where you would add code to send the form data via email.
-            alert(`Email sent with the following details:\nName: ${name}\nPhone: ${phone}\nEmail: ${email}\nDates: ${dates}`);
+            alert(`Email sent with the following details:\nName: ${name}\nPhone: ${phone}\nEmail: ${email}\nDates: ${dates}\nSuggested Time: ${time}`);
         }
 
         function login(event) {
@@ -151,4 +169,5 @@
     </script>
 </body>
 </html>
+
 
