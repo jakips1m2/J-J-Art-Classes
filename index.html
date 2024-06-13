@@ -65,6 +65,40 @@
             margin-bottom: 10px;
         }
 
+        .form-container {
+            margin-top: 20px;
+            text-align: left;
+        }
+
+        .form-container label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .form-container input[type="text"], 
+        .form-container input[type="email"],
+        .form-container textarea {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 14px;
+        }
+
+        .form-container input[type="submit"] {
+            background-color: #5f94e8;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        .form-container input[type="submit"]:hover {
+            background-color: #3e78c0;
+        }
+
         footer {
             background-color: #d4c7b7;
             padding: 10px;
@@ -109,21 +143,52 @@
         <section id="calendar" class="section">
             <h2>Visual Calendar</h2>
             <p>Use the calendar below to select your preferred dates:</p>
-            <!-- Add your interactive calendar component here -->
+            <!-- Calendar component (replace with actual calendar implementation) -->
+            <div class="calendar">
+                <!-- Placeholder for calendar -->
+                <input type="date" id="calendar-date">
+                <input type="time" id="calendar-time">
+            </div>
+            <button onclick="submitCalendar()">Submit</button>
         </section>
 
         <section id="ideas" class="section">
             <h2>Ideas</h2>
             <p>Submit your ideas for what your children want to draw:</p>
-            <!-- Add your submission form for ideas here -->
+            <!-- Ideas submission form -->
+            <div class="form-container">
+                <form action="mailto:judet.v789@gmail.com" method="post" enctype="text/plain">
+                    <label for="name">Your Name:</label>
+                    <input type="text" id="name" name="name" required>
+                    
+                    <label for="email">Your Email:</label>
+                    <input type="email" id="email" name="email" required>
+                    
+                    <label for="idea">Idea for Drawing:</label>
+                    <textarea id="idea" name="idea" rows="4" required></textarea>
+                    
+                    <input type="submit" value="Submit">
+                </form>
+            </div>
         </section>
     </main>
 
     <footer>
         <p>&copy; 2024 J & J Art Classes. All rights reserved.</p>
     </footer>
+
+    <script>
+        function submitCalendar() {
+            // Replace with actual submission logic (e.g., send email with selected date/time)
+            var selectedDate = document.getElementById('calendar-date').value;
+            var selectedTime = document.getElementById('calendar-time').value;
+            var message = "Selected Date: " + selectedDate + "\nSelected Time: " + selectedTime;
+            alert(message); // Example: Replace with actual email submission logic
+        }
+    </script>
 </body>
 </html>
+
 
 
 
