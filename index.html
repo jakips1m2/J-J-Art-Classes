@@ -145,7 +145,7 @@
         <section id="calendar" class="section">
             <h2>Schedule Your Class</h2>
             <div class="form-container">
-                <form id="class-form" action="mailto:judet.v789@gmail.com" method="post" enctype="text/plain">
+                <form id="class-form" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
                     <label for="name">Your Name:</label>
                     <input type="text" id="name" name="name" required>
                     
@@ -160,24 +160,82 @@
                     
                     <input type="submit" value="Submit">
                 </form>
+                <?php
+                // PHP script for sending email
+                if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                    // Collect form data
+                    $name = $_POST['name'];
+                    $email = $_POST['email'];
+                    $date = $_POST['date'];
+                    $time = $_POST['time'];
+
+                    // Set recipient email address
+                    $to = "judet.v789@gmail.com";
+                    $subject = "Class Schedule Request";
+
+                    // Email content
+                    $message = "Name: $name\n";
+                    $message .= "Email: $email\n";
+                    $message .= "Date: $date\n";
+                    $message .= "Time: $time\n";
+
+                    // Headers
+                    $headers = "From: $email";
+
+                    // Send email
+                    if (mail($to, $subject, $message, $headers)) {
+                        echo '<p style="color:green;">Email sent successfully.</p>';
+                    } else {
+                        echo '<p style="color:red;">Failed to send email.</p>';
+                    }
+                }
+                ?>
             </div>
         </section>
 
         <section id="ideas" class="section">
             <h2>Ideas for Drawing</h2>
             <div class="form-container">
-                <form id="ideas-form" action="mailto:judet.v789@gmail.com" method="post" enctype="text/plain">
+                <form id="ideas-form" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
                     <label for="ideas-name">Your Name:</label>
-                    <input type="text" id="ideas-name" name="ideas-name" required>
+                    <input type="text" id="ideas-name" name="name" required>
                     
                     <label for="ideas-email">Your Email:</label>
-                    <input type="email" id="ideas-email" name="ideas-email" required>
+                    <input type="email" id="ideas-email" name="email" required>
                     
                     <label for="idea">Idea for Drawing:</label>
                     <textarea id="idea" name="idea" rows="4" required></textarea>
                     
                     <input type="submit" value="Submit">
                 </form>
+                <?php
+                // PHP script for sending email
+                if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                    // Collect form data
+                    $name = $_POST['name'];
+                    $email = $_POST['email'];
+                    $idea = $_POST['idea'];
+
+                    // Set recipient email address
+                    $to = "judet.v789@gmail.com";
+                    $subject = "Drawing Idea Submission";
+
+                    // Email content
+                    $message = "Name: $name\n";
+                    $message .= "Email: $email\n";
+                    $message .= "Idea: $idea\n";
+
+                    // Headers
+                    $headers = "From: $email";
+
+                    // Send email
+                    if (mail($to, $subject, $message, $headers)) {
+                        echo '<p style="color:green;">Email sent successfully.</p>';
+                    } else {
+                        echo '<p style="color:red;">Failed to send email.</p>';
+                    }
+                }
+                ?>
             </div>
         </section>
     </main>
@@ -185,64 +243,9 @@
     <footer>
         <p>&copy; 2024 J & J Art Classes. All rights reserved.</p>
     </footer>
-
-    <script>
-        // Function to handle form submission for scheduling class
-        document.getElementById("class-form").addEventListener("submit", function(event) {
-            event.preventDefault(); // Prevent default form submission
-            
-            // Collect form data
-            var formData = new FormData(this);
-            var formEntries = formData.entries();
-            var formDataObject = {};
-            
-            // Convert FormData to JSON object
-            for (const [key, value] of formEntries) {
-                formDataObject[key] = value;
-            }
-
-            // Prepare email content
-            var emailContent = `Name: ${formDataObject.name}\nEmail: ${formDataObject.email}\nDate: ${formDataObject.date}\nTime: ${formDataObject.time}`;
-
-            // Simulate sending email (replace with actual email sending logic)
-            console.log("Sending email to judet.v789@gmail.com with content:\n" + emailContent);
-            // Example: Use AJAX to send email
-            // $.post('send-email.php', formDataObject);
-
-            // Optional: Display confirmation message
-            alert("Your class request has been submitted!");
-            this.reset(); // Reset form fields after submission
-        });
-
-        // Function to handle form submission for submitting drawing ideas
-        document.getElementById("ideas-form").addEventListener("submit", function(event) {
-            event.preventDefault(); // Prevent default form submission
-            
-            // Collect form data
-            var formData = new FormData(this);
-            var formEntries = formData.entries();
-            var formDataObject = {};
-            
-            // Convert FormData to JSON object
-            for (const [key, value] of formEntries) {
-                formDataObject[key] = value;
-            }
-
-            // Prepare email content
-            var emailContent = `Name: ${formDataObject['ideas-name']}\nEmail: ${formDataObject['ideas-email']}\nIdea: ${formDataObject.idea}`;
-
-            // Simulate sending email (replace with actual email sending logic)
-            console.log("Sending email to judet.v789@gmail.com with content:\n" + emailContent);
-            // Example: Use AJAX to send email
-            // $.post('send-email.php', formDataObject);
-
-            // Optional: Display confirmation message
-            alert("Your drawing idea has been submitted!");
-            this.reset(); // Reset form fields after submission
-        });
-    </script>
 </body>
 </html>
+
 
 
 
