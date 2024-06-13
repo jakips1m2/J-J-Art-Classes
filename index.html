@@ -4,197 +4,124 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>J & J Art Classes</title>
-    <link href="https://fonts.googleapis.com/css2?family=Chewy&display=swap" rel="stylesheet">
     <style>
+        /* General styles */
         body {
-            font-family: 'Chewy', cursive;
-            background-color: #f5f5dc; /* Cream background */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f1ea;
+            color: #564f4c;
             margin: 0;
             padding: 0;
-            color: #5c4033; /* Warm brown text */
-            display: flex;
-            flex-direction: column;
-            height: 100vh;
         }
+
         header {
-            background-color: #d2b48c; /* Tan background */
+            background-color: #d4c7b7;
             padding: 20px;
             text-align: center;
-            position: relative;
         }
-        header img {
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            height: 80px;
-        }
-        nav {
-            text-align: center;
-            margin: 0;
-            padding: 10px 0;
-            background-color: #e9c3a6; /* Light tan background */
-        }
-        nav a {
-            margin: 0 15px;
-            text-decoration: none;
-            color: #5c4033;
-            font-weight: bold;
-        }
-        section {
-            flex: 1;
-            padding: 20px;
-            overflow-y: auto;
-            display: none;
-        }
-        section.active {
-            display: block;
-        }
-        .calendar, .artwork, .login-form {
+
+        main {
+            max-width: 800px;
             margin: 0 auto;
-            max-width: 500px;
-            width: 100%;
+            padding: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
         }
-        .login-form input {
-            margin: 10px 0;
+
+        .section {
+            background-color: #f0ede6;
+            border: 1px solid #d4c7b7;
+            padding: 20px;
+            margin: 10px;
+            text-align: center;
+            width: 100%;
+            max-width: 350px;
+        }
+
+        .section h2 {
+            color: #564f4c;
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+
+        .section p {
+            color: #564f4c;
+            line-height: 1.6;
+        }
+
+        .section a {
+            color: #5f94e8;
+            text-decoration: none;
+        }
+
+        .section a:hover {
+            text-decoration: underline;
+        }
+
+        .profile-img {
+            max-width: 100%;
+            border-radius: 50%;
+            margin-bottom: 10px;
+        }
+
+        footer {
+            background-color: #d4c7b7;
             padding: 10px;
-            width: calc(100% - 22px);
-            box-sizing: border-box;
+            text-align: center;
         }
-        .flower {
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 100px;
+
+        footer p {
+            margin: 0;
+            font-size: 0.8em;
+            color: #564f4c;
         }
-        form label, form input, form button {
-            display: block;
-            width: 100%;
-            margin: 5px 0;
-        }
-        .reviews {
-            display: none;
-        }
-        .admin-section {
-            display: none;
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
         }
     </style>
 </head>
 <body>
     <header>
         <h1>J & J Art Classes</h1>
-        <img src="https://cdn.pixabay.com/photo/2016/09/21/04/46/flower-1686550_1280.png" alt="Flower" class="flower">
     </header>
-    <nav>
-        <a href="#" onclick="showSection('home')">Home</a>
-        <a href="#" onclick="showSection('calendar')">Calendar</a>
-        <a href="#" onclick="showSection('artwork')">Add Artwork</a>
-        <a href="#" onclick="showSection('login')">Login</a>
-    </nav>
 
-    <section id="home" class="active">
-        <h2>Welcome to J & J Art Classes</h2>
-        <p>Hey, young creatives! I'm Jude, and I'm all about keeping things chill and colorful. At my art studio, it's not about perfection; it's about the journey of creating something uniquely yours. If you're looking to escape the everyday hustle and bustle and dive into a world of paint, pencils, and endless possibilities, you've come to the right place.</p>
-        <p>My in-person art classes are a space where you can kick back, relax, and let your imagination run wild. From learning the basics of sketching to experimenting with different painting techniques, we'll explore it all at your own pace. No pressure, just good vibes and plenty of room to explore.</p>
-        <p>Price: 240 DHS a month, 30 DHS per class</p>
-        <p>Classes are held every Saturday and Sunday.</p>
-        <p>Contact us at 0562418046 or email judet.v789@gmail.com</p>
-    </section>
+    <main>
+        <section id="about" class="section">
+            <h2>About Me</h2>
+            <img src="images/jude.jpg" alt="Jude" class="profile-img">
+            <p>Hello! I'm Jude, a 16-year-old who recently completed my GCSE art course. I have a passion for art and adore teaching children how to express their creativity through drawing and painting.</p>
+            <p>Join me in exploring the world of art together!</p>
+        </section>
 
-    <section id="calendar">
-        <h2>Class Calendar</h2>
-        <form onsubmit="sendEmail(event)">
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name" required><br>
-            <label for="phone">Phone:</label>
-            <input type="text" id="phone" name="phone" required><br>
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required><br>
-            <label for="dates">Select Dates:</label>
-            <input type="date" id="dates" name="dates" multiple required><br>
-            <label for="time">Suggested Time:</label>
-            <input type="time" id="time" name="time" required><br>
-            <button type="submit">Submit</button>
-        </form>
-    </section>
+        <section id="price" class="section">
+            <h2>Price of Classes</h2>
+            <p>Monthly fee: 240 DHS<br>
+               Per class: 30 DHS (2 classes per week)<br>
+               Classes every Saturday and Sunday</p>
+            <p>Contact for more information:<br>
+               Phone: 0562418046<br>
+               Email: <a href="mailto:judet.v789@gmail.com">judet.v789@gmail.com</a></p>
+        </section>
 
-    <section id="artwork" class="admin-section">
-        <h2>Add Artwork</h2>
-        <form onsubmit="addArtwork(event)">
-            <label for="studentName">Student Name:</label>
-            <input type="text" id="studentName" name="studentName" required><br>
-            <label for="artworkImage">Artwork Image URL:</label>
-            <input type="url" id="artworkImage" name="artworkImage" required><br>
-            <button type="submit">Add Artwork</button>
-        </form>
-    </section>
+        <section id="calendar" class="section">
+            <h2>Visual Calendar</h2>
+            <p>Use the calendar below to select your preferred dates:</p>
+            <!-- Add your interactive calendar component here -->
+        </section>
 
-    <section id="login">
-        <h2>Login</h2>
-        <form class="login-form" onsubmit="login(event)">
-            <label for="username">Username:</label>
-            <input type="text" id="username" name="username" required><br>
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password" required><br>
-            <button type="submit">Login</button>
-        </form>
-    </section>
+        <section id="ideas" class="section">
+            <h2>Ideas</h2>
+            <p>Submit your ideas for what your children want to draw:</p>
+            <!-- Add your submission form for ideas here -->
+        </section>
+    </main>
 
-    <script>
-        function showSection(id) {
-            document.querySelectorAll('section').forEach(section => {
-                section.classList.remove('active');
-            });
-            document.getElementById(id).classList.add('active');
-
-            if (id === 'artwork') {
-                document.getElementById('username').value = ''; // Clear username field when switching to artwork section
-                document.getElementById('password').value = ''; // Clear password field when switching to artwork section
-            }
-
-            if (id === 'login') {
-                document.getElementById('artwork').classList.remove('admin-section'); // Ensure artwork section is not visible in login view
-            } else {
-                document.getElementById('artwork').classList.add('admin-section'); // Show artwork section only in admin view
-            }
-        }
-
-        function sendEmail(event) {
-            event.preventDefault();
-            const name = document.getElementById('name').value;
-            const phone = document.getElementById('phone').value;
-            const email = document.getElementById('email').value;
-            const dates = document.getElementById('dates').value;
-            const time = document.getElementById('time').value;
-
-            // This is where you would add code to send the form data via email.
-            alert(`Email sent with the following details:\nName: ${name}\nPhone: ${phone}\nEmail: ${email}\nDates: ${dates}\nSuggested Time: ${time}`);
-        }
-
-        function addArtwork(event) {
-            event.preventDefault();
-            const studentName = document.getElementById('studentName').value;
-            const artworkImage = document.getElementById('artworkImage').value;
-
-            // Normally, you would send this data to a server to store in a database
-            alert(`Artwork added for ${studentName}:\nImage URL: ${artworkImage}`);
-        }
-
-        function login(event) {
-            event.preventDefault();
-            const username = document.getElementById('username').value;
-            const password = document.getElementById('password').value;
-
-            if (username === 'admin' && password === 'password123') {
-                alert('Login successful');
-                // Show admin features
-                document.querySelectorAll('.admin-section').forEach(section => {
-                    section.style.display = 'block';
-                });
-            } else {
-                alert('Incorrect username or password');
-            }
-        }
-    </script>
+    <footer>
+        <p>&copy; 2024 J & J Art Classes. All rights reserved.</p>
+    </footer>
 </body>
 </html>
 
