@@ -49,7 +49,7 @@
         section.active {
             display: block;
         }
-        .calendar, .reviews, .artwork, .login-form {
+        .calendar, .artwork, .login-form {
             margin: 0 auto;
             max-width: 500px;
             width: 100%;
@@ -71,6 +71,12 @@
             width: 100%;
             margin: 5px 0;
         }
+        .reviews {
+            display: none;
+        }
+        .admin-section {
+            display: none;
+        }
     </style>
 </head>
 <body>
@@ -81,7 +87,7 @@
     <nav>
         <a href="#" onclick="showSection('home')">Home</a>
         <a href="#" onclick="showSection('calendar')">Calendar</a>
-        <a href="#" onclick="showSection('reviews')">Reviews</a>
+        <a href="#" onclick="showSection('artwork')">Add Artwork</a>
         <a href="#" onclick="showSection('login')">Login</a>
     </nav>
 
@@ -111,16 +117,15 @@
         </form>
     </section>
 
-    <section id="reviews">
-        <h2>Reviews and Artwork</h2>
-        <div class="reviews">
-            <h3>Reviews</h3>
-            <!-- Placeholder for reviews -->
-        </div>
-        <div class="artwork">
-            <h3>Student Artwork</h3>
-            <!-- Placeholder for artwork -->
-        </div>
+    <section id="artwork" class="admin-section">
+        <h2>Add Artwork</h2>
+        <form onsubmit="addArtwork(event)">
+            <label for="studentName">Student Name:</label>
+            <input type="text" id="studentName" name="studentName" required><br>
+            <label for="artworkImage">Artwork Image URL:</label>
+            <input type="url" id="artworkImage" name="artworkImage" required><br>
+            <button type="submit">Add Artwork</button>
+        </form>
     </section>
 
     <section id="login">
@@ -140,6 +145,17 @@
                 section.classList.remove('active');
             });
             document.getElementById(id).classList.add('active');
+
+            if (id === 'artwork') {
+                document.getElementById('username').value = ''; // Clear username field when switching to artwork section
+                document.getElementById('password').value = ''; // Clear password field when switching to artwork section
+            }
+
+            if (id === 'login') {
+                document.getElementById('artwork').classList.remove('admin-section'); // Ensure artwork section is not visible in login view
+            } else {
+                document.getElementById('artwork').classList.add('admin-section'); // Show artwork section only in admin view
+            }
         }
 
         function sendEmail(event) {
@@ -154,6 +170,15 @@
             alert(`Email sent with the following details:\nName: ${name}\nPhone: ${phone}\nEmail: ${email}\nDates: ${dates}\nSuggested Time: ${time}`);
         }
 
+        function addArtwork(event) {
+            event.preventDefault();
+            const studentName = document.getElementById('studentName').value;
+            const artworkImage = document.getElementById('artworkImage').value;
+
+            // Normally, you would send this data to a server to store in a database
+            alert(`Artwork added for ${studentName}:\nImage URL: ${artworkImage}`);
+        }
+
         function login(event) {
             event.preventDefault();
             const username = document.getElementById('username').value;
@@ -161,7 +186,10 @@
 
             if (username === 'admin' && password === 'password123') {
                 alert('Login successful');
-                // Add code to show admin features
+                // Show admin features
+                document.querySelectorAll('.admin-section').forEach(section => {
+                    section.style.display = 'block';
+                });
             } else {
                 alert('Incorrect username or password');
             }
