@@ -3,247 +3,131 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>J & J Art Classes</title>
+    <title>J&J Art Classes</title>
     <style>
-        /* General styles */
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f4f1ea;
-            color: #564f4c;
+            font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
         }
-
         header {
-            background-color: #d4c7b7;
-            padding: 20px;
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px;
             text-align: center;
+            font-size: 24px;
+            font-weight: bold;
         }
-
-        main {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
+        nav {
+            background-color: #333;
+            overflow: hidden;
         }
-
-        .section {
-            background-color: #f0ede6;
-            border: 1px solid #d4c7b7;
-            padding: 20px;
-            margin: 10px;
+        nav a {
+            float: left;
+            display: block;
+            color: white;
             text-align: center;
-            width: 100%;
-            max-width: 350px;
-        }
-
-        .section h2 {
-            color: #564f4c;
-            font-size: 1.5em;
-            margin-bottom: 10px;
-        }
-
-        .section p {
-            color: #564f4c;
-            line-height: 1.6;
-        }
-
-        .section a {
-            color: #5f94e8;
+            padding: 14px 16px;
             text-decoration: none;
         }
-
-        .section a:hover {
-            text-decoration: underline;
+        nav a:hover {
+            background-color: #ddd;
+            color: black;
         }
-
-        .profile-img {
-            max-width: 100%;
-            border-radius: 50%;
-            margin-bottom: 10px;
+        .container {
+            padding: 20px;
         }
-
-        .form-container {
-            margin-top: 20px;
-            text-align: left;
-        }
-
-        .form-container label {
-            display: block;
-            margin-bottom: 5px;
-        }
-
-        .form-container input[type="text"], 
-        .form-container input[type="email"],
-        .form-container input[type="date"],
-        .form-container input[type="time"],
-        .form-container textarea {
-            width: 100%;
-            padding: 8px;
-            margin-bottom: 10px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            box-sizing: border-box;
-            font-size: 14px;
-        }
-
-        .form-container input[type="submit"] {
-            background-color: #5f94e8;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            cursor: pointer;
-        }
-
-        .form-container input[type="submit"]:hover {
-            background-color: #3e78c0;
-        }
-
-        footer {
-            background-color: #d4c7b7;
-            padding: 10px;
+        .decorative-box {
+            border: 2px solid #4CAF50;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
             text-align: center;
+            background-color: #f9f9f9;
         }
-
-        footer p {
-            margin: 0;
-            font-size: 0.8em;
-            color: #564f4c;
+        .about-section {
+            border: 2px solid #f44336;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            background-color: #fff7f7;
         }
-
-        /* Smooth scrolling */
-        html {
-            scroll-behavior: smooth;
+        .decorative-box-title {
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .subtitle {
+            border: 1px solid #4CAF50;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 10px;
+            background-color: #e0f7fa;
         }
     </style>
 </head>
 <body>
-    <header>
-        <h1>J & J Art Classes</h1>
-    </header>
 
-    <main>
-        <section id="about" class="section">
-            <h2>About Me</h2>
-            <img src="images/jude.jpg" alt="Jude" class="profile-img">
-            <p>Hello! I'm Jude, a 16-year-old who recently completed my GCSE art course. I have a passion for art and adore teaching children how to express their creativity through drawing and painting.</p>
-            <p>Join me in exploring the world of art together!</p>
-        </section>
+<header>
+    J&J Art Classes
+</header>
 
-        <section id="price" class="section">
-            <h2>Price of Classes</h2>
-            <p>Monthly fee: 240 DHS<br>
-               Per class: 30 DHS (2 classes per week)<br>
-               Classes every Saturday and Sunday</p>
-            <p>Contact for more information:<br>
-               Phone: 0562418046<br>
-               Email: <a href="mailto:judet.v789@gmail.com">judet.v789@gmail.com</a></p>
-        </section>
+<nav>
+    <a href="index.html">Home</a>
+    <a href="contact.html">Contact Information</a>
+    <a href="prices.html">Prices</a>
+</nav>
 
-        <section id="calendar" class="section">
-            <h2>Schedule Your Class</h2>
-            <div class="form-container">
-                <form id="class-form" action="mailto:judet.v789@gmail.com" method="post" enctype="text/plain">
-                    <label for="name">Your Name:</label>
-                    <input type="text" id="name" name="name" required>
-                    
-                    <label for="email">Your Email:</label>
-                    <input type="email" id="email" name="email" required>
-                    
-                    <label for="date">Preferred Date:</label>
-                    <input type="date" id="date" name="date" required>
-                    
-                    <label for="time">Preferred Time:</label>
-                    <input type="time" id="time" name="time" required>
-                    
-                    <input type="submit" value="Submit">
-                </form>
-            </div>
-        </section>
+<div class="container">
+    <!-- Home Page Content -->
+    <div id="home" class="decorative-box">
+        <div class="decorative-box-title">J&J Art Classes</div>
+    </div>
+    <div class="about-section">
+        <h2>About Us</h2>
+        <p>Hello! We are Jude and Julia, two 16-year-olds who love art and are excited to share our passion with you. We started J&J Art Classes to help others express their creativity and improve their artistic skills. We both have pets: Jude has a pet named Ghost and Julia has a pet named Dominique. We are currently in Year 11 and hope to go to university in Canada.</p>
+    </div>
+</div>
 
-        <section id="ideas" class="section">
-            <h2>Ideas for Drawing</h2>
-            <div class="form-container">
-                <form id="ideas-form" action="mailto:judet.v789@gmail.com" method="post" enctype="text/plain">
-                    <label for="ideas-name">Your Name:</label>
-                    <input type="text" id="ideas-name" name="ideas-name" required>
-                    
-                    <label for="ideas-email">Your Email:</label>
-                    <input type="email" id="ideas-email" name="ideas-email" required>
-                    
-                    <label for="idea">Idea for Drawing:</label>
-                    <textarea id="idea" name="idea" rows="4" required></textarea>
-                    
-                    <input type="submit" value="Submit">
-                </form>
-            </div>
-        </section>
-    </main>
+<div class="container" style="display:none;">
+    <!-- Contact Information Page Content -->
+    <div class="decorative-box">
+        <div class="decorative-box-title">Contact Information</div>
+    </div>
+    <div class="subtitle">Our Educators</div>
+    <p><strong>Jude</strong></p>
+    <p>Phone: <a href="https://wa.me/0562418046">0562418046</a></p>
+    <p>Email: <a href="mailto:judet.v789@gmail.com">judet.v789@gmail.com</a></p>
+    <p><strong>Julia</strong></p>
+    <p>Phone: <a href="https://wa.me/0559343995">0559343995</a></p>
+    <p>Email: <a href="mailto:juliachamlat1point@gmail.com">juliachamlat1point@gmail.com</a></p>
+</div>
 
-    <footer>
-        <p>&copy; 2024 J & J Art Classes. All rights reserved.</p>
-    </footer>
+<div class="container" style="display:none;">
+    <!-- Prices Page Content -->
+    <div class="decorative-box">
+        <div class="decorative-box-title">Prices</div>
+    </div>
+    <div class="subtitle">1 Class</div>
+    <p>For 1 individual class, the price will be 30 Dhs. Each class is 1 hour.</p>
+    <div class="subtitle">Monthly Subscription</div>
+    <p>For the monthly subscription, the total price will be 240 Dhs with 2 classes a week. Each class will be 1 hour, totaling 2 hours of classes per week.</p>
+    <p>Payment can be done by cash or bank transfer, but cash is preferred!</p>
+    <p>Thank you for visiting our website!</p>
+</div>
 
-    <script>
-        // Function to handle form submission for scheduling class
-        document.getElementById("class-form").addEventListener("submit", function(event) {
-            event.preventDefault(); // Prevent default form submission
-            
-            // Collect form data
-            var formData = new FormData(this);
-            var formEntries = formData.entries();
-            var formDataObject = {};
-            
-            // Convert FormData to JSON object
-            for (const [key, value] of formEntries) {
-                formDataObject[key] = value;
-            }
-
-            // Prepare email content
-            var emailContent = `Name: ${formDataObject.name}\nEmail: ${formDataObject.email}\nDate: ${formDataObject.date}\nTime: ${formDataObject.time}`;
-
-            // Simulate sending email (replace with actual email sending logic)
-            console.log("Sending email to judet.v789@gmail.com with content:\n" + emailContent);
-            // Example: Use AJAX to send email
-            // $.post('send-email.php', formDataObject);
-
-            // Optional: Display confirmation message
-            alert("Your class request has been submitted!");
-            this.reset(); // Reset form fields after submission
+<script>
+    document.querySelectorAll('nav a').forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const pages = document.querySelectorAll('.container');
+            pages.forEach(page => page.style.display = 'none');
+            document.querySelector(this.getAttribute('href')).style.display = 'block';
         });
+    });
+</script>
 
-        // Function to handle form submission for submitting drawing ideas
-        document.getElementById("ideas-form").addEventListener("submit", function(event) {
-            event.preventDefault(); // Prevent default form submission
-            
-            // Collect form data
-            var formData = new FormData(this);
-            var formEntries = formData.entries();
-            var formDataObject = {};
-            
-            // Convert FormData to JSON object
-            for (const [key, value] of formEntries) {
-                formDataObject[key] = value;
-            }
-
-            // Prepare email content
-            var emailContent = `Name: ${formDataObject['ideas-name']}\nEmail: ${formDataObject['ideas-email']}\nIdea: ${formDataObject.idea}`;
-
-            // Simulate sending email (replace with actual email sending logic)
-            console.log("Sending email to judet.v789@gmail.com with content:\n" + emailContent);
-            // Example: Use AJAX to send email
-            // $.post('send-email.php', formDataObject);
-
-            // Optional: Display confirmation message
-            alert("Your drawing idea has been submitted!");
-            this.reset(); // Reset form fields after submission
-        });
-    </script>
 </body>
 </html>
-
 
 
 
